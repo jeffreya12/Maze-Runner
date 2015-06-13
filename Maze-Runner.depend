@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1433784645 source:c:\users\jeffrey\downloads\maze-runner\src\main.cpp
+1433954191 source:c:\users\jeffrey\dropbox\docs\proyectos\c++\laberintos\src\main.cpp
 	<iostream>
 	<algorithm>
 	<time.h>
@@ -9,12 +9,12 @@
 	<winbgim.h>
 	"../include/LinkedList.h"
 
-1433391440 c:\users\jeffrey\downloads\maze-runner\include\linkedlist.h
+1433391440 c:\users\jeffrey\dropbox\docs\proyectos\c++\laberintos\include\linkedlist.h
 	<iostream>
 	<stdexcept>
 	"Node.h"
 
-1430963626 c:\users\jeffrey\downloads\maze-runner\include\node.h
+1430963626 c:\users\jeffrey\dropbox\docs\proyectos\c++\laberintos\include\node.h
 	<iostream>
 	<stdexcept>
 

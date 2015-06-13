@@ -31,7 +31,8 @@ bool allTrue(bool* pArray){ //Revisa que en un array de booleanos todos sean tru
 }
 
 bool isATreasureThere(int pElement){ //Revisa si en la posicion actual hay un tesoro.
-    for (int i = 0; i < 5; i++){
+    int tresuresSize = currentTreasures.size();
+    for (int i = 0; i < tresuresSize; i++){
         if (currentTreasures[i] == pElement){
             return true;
         }
@@ -242,7 +243,6 @@ void juego(){ //Funcion principal del juego.
 void init(){ //Reinicia todos los valores.
     cleardevice();
     currentNode = 0;
-    timeToSolve = 100;
     currentTreasures.clear();
     for (int i = 0; i < 100; i++){
         maze[i].clear();    //Limpia los
@@ -259,6 +259,7 @@ int main(){
         treasures.push_back(i);
     }
     help = 0;
+    timeToSolve = 100;
     collectedTreasures = 0;
     srand(time(0));
     defaultGraph();
