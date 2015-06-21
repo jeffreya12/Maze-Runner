@@ -15,7 +15,7 @@ LinkedList<int>* mazeAux = new LinkedList<int>[100]; //Grafo para graficar.
 vector<int> treasures; //Lista encargada de generar los tesoros aleatorios.
 vector<int> currentTreasures; //Lista que contiene los tesoros del nivel actual.
 bool* visited = new bool[100];
-bool looser;
+bool loser;
 int currentNode;
 int timeToSolve; //Tiempo minimo para resolver el laberinto.
 int collectedTreasures;
@@ -154,8 +154,6 @@ void defaultGraph(){ //Genera un grafo generico.
 void graficador(){ //Pone el laberinto en pantalla.
     int filaNodo, columnaNodo, filaVecino, columnaVecino, vecino;
     int tamanoCurrentTreasures = currentTreasures.size();
-    setfillstyle(SOLID_FILL, 15);
-    floodfill(0, 0, 7);
     setfillstyle(SOLID_FILL, 0);
     for (int i = 0; i < 100; i++){ //Se mueve al nodo
             filaNodo = i / 10;    //Calcula el numero de fila
@@ -231,17 +229,19 @@ void juego(){ //Funcion principal del juego.
         }
         graficador();
         if (difftime(time(0), start) > timeToSolve){ //Si se cumplio el tiempo.
-            looser = true;
+            loser = true;
             break;
         }
     }
-    if (timeToSolve != 16){ //Resta 3 segundos al tiempo despues de cada nivel.
+    if (timeToSolve != 10){ //Resta 3 segundos al tiempo despues de cada nivel.
         timeToSolve -= 3;
     }
 }
 
 void init(){ //Reinicia todos los valores.
     cleardevice();
+    setfillstyle(SOLID_FILL, 15);
+    floodfill(0, 0, 7);
     currentNode = 0;
     currentTreasures.clear();
     for (int i = 0; i < 100; i++){
@@ -259,16 +259,17 @@ int main(){
         treasures.push_back(i);
     }
     help = 0;
-    timeToSolve = 100;
+    timeToSolve = 50;
     collectedTreasures = 0;
     srand(time(0));
     defaultGraph();
     initwindow(430, 430);
-    while (!looser){
+    while (!loser){
         init();
         juego();
     }
+    closegraph();
     cout << "\nSe acabo el tiempo\n\nTesoros recogidos: " << collectedTreasures << "\n\n"; //Cuando el
-    system("pause");                                                                       //jugador pierde.
+    system("pause");                                                                      //jugador pierde.
     return 0;
 }
